@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wayne Hosting — 你的伺服器，不需要很複雜。</title>
+
+  <meta
+    name="description"
+    content="Wayne Hosting 提供 Node.js、Python、Java 與 Minecraft 伺服器服務。"
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root {
+      --blue: #1769ff;
+      --blue-hover: #0757e8;
+
+      --black: #0a0d12;
+      --text: #11151c;
+      --muted: #697382;
+
+      --white: #ffffff;
+      --gray: #f5f7fa;
+      --gray-2: #eef1f5;
+
+      --line: #e4e8ee;
+
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+
+      font-family:
+        "Inter",
+        "Noto Sans TC",
+        sans-serif;
+
+      line-height: 1.7;
+
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    .container {
+      width: min(
+        calc(100% - 48px),
+        var(--max)
+      );
+
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      color: var(--blue);
+
+      font-size: 11px;
+      font-weight: 700;
+
+      letter-spacing: .08em;
+    }
+
+    .eyebrow::before {
+      content: "";
+
+      width: 18px;
+      height: 2px;
+
+      background: var(--blue);
+    }
+
+    .section {
+      padding: 120px 0;
+    }
+
+
+    /* =========================================================
+       NAV
+    ========================================================= */
+
+    .header {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 100;
+
+      height: 68px;
+
+      background: rgba(255,255,255,.82);
+
+      border-bottom: 1px solid transparent;
+
+      backdrop-filter: blur(18px);
+
+      transition:
+        background .25s ease,
+        border-color .25s ease;
+    }
+
+    .header.active {
+      background: rgba(255,255,255,.96);
+      border-color: var(--line);
+    }
+
+    .nav {
+      height: 100%;
+
+      display: flex;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 15px;
+      font-weight: 800;
+
+      letter-spacing: -.035em;
+    }
+
+    .brand-symbol {
+      width: 29px;
+      height: 29px;
+
+      display: grid;
+      place-items: center;
+
+      background: var(--black);
+      color: white;
+
+      border-radius: 3px;
+
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 29px;
+
+      margin-left: auto;
+      margin-right: 28px;
+
+      color: #657080;
+
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    .nav-links a {
+      transition: color .18s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    .nav-cta {
+      height: 38px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0 16px;
+
+      background: var(--blue);
+      color: white;
+
+      border-radius: 3px;
+
+      font-size: 11px;
+      font-weight: 700;
+
+      transition:
+        background .18s ease,
+        transform .18s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-hover);
+      transform: translateY(-1px);
+    }
+
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      min-height: 810px;
+
+      display: flex;
+      align-items: center;
+
+      padding-top: 68px;
+
+      overflow: hidden;
+
+      background:
+        radial-gradient(
+          circle at 82% 25%,
+          rgba(23,105,255,.09),
+          transparent 30%
+        ),
+        #ffffff;
+    }
+
+    .hero-grid {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        430px;
+
+      align-items: center;
+
+      gap: 100px;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+    }
+
+    .hero h1 {
+      margin-top: 25px;
+
+      font-size:
+        clamp(
+          54px,
+          7vw,
+          88px
+        );
+
+      line-height: 1.02;
+
+      letter-spacing: -.075em;
+
+      font-weight: 800;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero-text {
+      max-width: 550px;
+
+      margin-top: 27px;
+
+      color: var(--muted);
+
+      font-size: 15px;
+
+      line-height: 1.95;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 10px;
+
+      margin-top: 35px;
+    }
+
+    .button {
+      min-height: 47px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+
+      padding: 0 20px;
+
+      border-radius: 3px;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      transition:
+        transform .2s ease,
+        background .2s ease,
+        border-color .2s ease;
+    }
+
+    .button-primary {
+      background: var(--blue);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--blue-hover);
+      transform: translateY(-2px);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .button-secondary:hover {
+      border-color: #c9d1dc;
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================================================
+       BRAND VISUAL
+    ========================================================= */
+
+    .brand-visual {
+      position: relative;
+
+      width: 430px;
+      height: 430px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-ring {
+      position: absolute;
+
+      width: 370px;
+      height: 370px;
+
+      border: 1px solid #dfe6ef;
+
+      border-radius: 50%;
+    }
+
+    .brand-ring::before {
+      content: "";
+
+      position: absolute;
+
+      inset: 45px;
+
+      border: 1px solid #e9edf2;
+
+      border-radius: 50%;
+    }
+
+    .brand-ring::after {
+      content: "";
+
+      position: absolute;
+
+      width: 1px;
+      height: 100%;
+
+      left: 50%;
+      top: 0;
+
+      background: #e4e9f0;
+    }
+
+    .brand-center {
+      position: relative;
+      z-index: 2;
+
+      width: 230px;
+      height: 230px;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: 30px;
+
+      background: var(--black);
+      color: white;
+
+      box-shadow:
+        20px 20px 0 rgba(23,105,255,.10);
+    }
+
+    .brand-center-mark {
+      color: #82aaff;
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: .15em;
+    }
+
+    .brand-center h2 {
+      margin-top: 14px;
+
+      font-size: 31px;
+      line-height: 1;
+
+      letter-spacing: -.06em;
+    }
+
+    .brand-center p {
+      margin-top: 14px;
+
+      color: #8994a5;
+
+      font-size: 11px;
+    }
+
+    .visual-label {
+      position: absolute;
+      z-index: 3;
+
+      padding: 10px 13px;
+
+      background: white;
+
+      border: 1px solid var(--line);
+
+      box-shadow:
+        0 12px 30px rgba(10,13,18,.07);
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .visual-label.one {
+      top: 55px;
+      right: 0;
+    }
+
+    .visual-label.two {
+      bottom: 55px;
+      left: 0;
+    }
+
+
+    /* =========================================================
+       RUNTIME STRIP
+    ========================================================= */
+
+    .runtime-strip {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .runtime-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(4, 1fr);
+    }
+
+    .runtime-item {
+      min-height: 105px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 27px;
+
+      border-right: 1px solid var(--line);
+    }
+
+    .runtime-item:first-child {
+      padding-left: 0;
+    }
+
+    .runtime-item:last-child {
+      border-right: 0;
+      padding-right: 0;
+    }
+
+    .runtime-name {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .runtime-type {
+      color: #9aa4b2;
+
+      font-size: 10px;
+    }
+
+    .runtime-arrow {
+      color: var(--blue);
+
+      font-size: 16px;
+
+      transition:
+        transform .2s ease;
+    }
+
+    .runtime-item:hover .runtime-arrow {
+      transform: translateX(4px);
+    }
+
+
+    /* =========================================================
+       WHY
+    ========================================================= */
+
+    .why {
+      background: var(--gray);
+    }
+
+    .why-header {
+      max-width: 680px;
+    }
+
+    .why h2 {
+      margin-top: 18px;
+
+      font-size:
+        clamp(
+          38px,
+          5vw,
+          58px
+        );
+
+      line-height: 1.08;
+
+      letter-spacing: -.065em;
+    }
+
+    .why-description {
+      max-width: 580px;
+
+      margin-top: 20px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.9;
+    }
+
+    .why-grid {
+      display: grid;
+
+      grid-template-columns:
+        1.3fr
+        1fr
+        1fr;
+
+      gap: 1px;
+
+      margin-top: 60px;
+
+      background: var(--line);
+
+      border: 1px solid var(--line);
+    }
+
+    .why-item {
+      min-height: 280px;
+
+      padding: 31px;
+
+      background: white;
+    }
+
+    .why-item.large {
+      background: var(--black);
+      color: white;
+    }
+
+    .why-number {
+      color: #a1aab7;
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .why-item.large .why-number {
+      color: #6e96f5;
+    }
+
+    .why-item h3 {
+      margin-top: 70px;
+
+      font-size: 22px;
+
+      letter-spacing: -.035em;
+    }
+
+    .why-item p {
+      max-width: 310px;
+
+      margin-top: 11px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.9;
+    }
+
+    .why-item.large p {
+      color: #8d98a8;
+    }
+
+
+    /* =========================================================
+       MANAGEMENT
+    ========================================================= */
+
+    .management {
+      padding: 125px 0;
+    }
+
+    .management-layout {
+      display: grid;
+
+      grid-template-columns:
+        .75fr
+        1.25fr;
+
+      gap: 100px;
+
+      align-items: center;
+    }
+
+    .management h2 {
+      margin-top: 18px;
+
+      font-size:
+        clamp(
+          37px,
+          4vw,
+          53px
+        );
+
+      line-height: 1.1;
+
+      letter-spacing: -.06em;
+    }
+
+    .management-copy p {
+      margin-top: 22px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.9;
+    }
+
+    .management-options {
+      border-top: 1px solid var(--line);
+    }
+
+    .management-option {
+      display: grid;
+
+      grid-template-columns:
+        55px
+        1fr
+        auto;
+
+      align-items: center;
+
+      min-height: 125px;
+
+      border-bottom: 1px solid var(--line);
+
+      transition:
+        padding .2s ease,
+        background .2s ease;
+    }
+
+    .management-option:hover {
+      padding-left: 12px;
+      background: var(--gray);
+    }
+
+    .management-number {
+      color: #9aa5b4;
+
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .management-option h3 {
+      font-size: 19px;
+
+      letter-spacing: -.02em;
+    }
+
+    .management-option p {
+      margin-top: 3px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+    }
+
+    .management-arrow {
+      color: var(--blue);
+
+      font-size: 18px;
+    }
+
+
+    /* =========================================================
+       STATUS
+    ========================================================= */
+
+    .status {
+      padding: 0 0 120px;
+    }
+
+    .status-inner {
+      display: flex;
+
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 30px;
+
+      padding: 32px 35px;
+
+      background: var(--black);
+
+      color: white;
+    }
+
+    .status-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+
+      background: #46d27d;
+
+      border-radius: 50%;
+    }
+
+    .status-title {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .status-description {
+      margin-top: 2px;
+
+      color: #818d9e;
+
+      font-size: 10px;
+    }
+
+    .status-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      min-height: 40px;
+
+      padding: 0 14px;
+
+      border: 1px solid rgba(255,255,255,.15);
+
+      font-size: 10px;
+      font-weight: 700;
+
+      transition: background .2s ease;
+    }
+
+    .status-button:hover {
+      background: rgba(255,255,255,.07);
+    }
+
+
+    /* =========================================================
+       CTA
+    ========================================================= */
+
+    .cta {
+      padding: 135px 0;
+
+      border-top: 1px solid var(--line);
+
+      background:
+        radial-gradient(
+          circle at 80% 60%,
+          rgba(23,105,255,.09),
+          transparent 30%
+        ),
+        #f7f9fc;
+    }
+
+    .cta-content {
+      max-width: 850px;
+    }
+
+    .cta h2 {
+      margin-top: 18px;
+
+      font-size:
+        clamp(
+          45px,
+          7vw,
+          82px
+        );
+
+      line-height: 1.02;
+
+      letter-spacing: -.075em;
+    }
+
+    .cta h2 span {
+      color: var(--blue);
+    }
+
+    .cta p {
+      max-width: 550px;
+
+      margin-top: 22px;
+
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.9;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 10px;
+
+      margin-top: 33px;
+    }
+
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      background: var(--black);
+      color: white;
+    }
+
+    .footer-top {
+      display: grid;
+
+      grid-template-columns:
+        1.5fr
+        1fr
+        1fr
+        1fr;
+
+      gap: 50px;
+
+      padding: 65px 0;
+    }
+
+    .footer-description {
+      max-width: 280px;
+
+      margin-top: 17px;
+
+      color: #788495;
+
+      font-size: 11px;
+
+      line-height: 1.9;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 15px;
+
+      color: #d5dbe4;
+
+      font-size: 10px;
+      font-weight: 700;
+
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .footer-column a {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: #778394;
+
+      font-size: 11px;
+
+      transition: color .18s ease;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      min-height: 68px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-top: 1px solid rgba(255,255,255,.08);
+
+      color: #5f6b7c;
+
+      font-size: 9px;
+    }
+
+
+    /* =========================================================
+       ANIMATION
+    ========================================================= */
+
+    .fade {
+      opacity: 0;
+
+      transform: translateY(18px);
+
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 950px) {
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+
+        padding-top: 120px;
+        padding-bottom: 100px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+      }
+
+      .brand-visual {
+        margin: 0 auto;
+      }
+
+      .management-layout {
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .why-item.large {
+        grid-column: 1 / -1;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+    }
+
+
+    @media (max-width: 650px) {
+
+      .container {
+        width: min(
+          calc(100% - 32px),
+          var(--max)
+        );
+      }
+
+      .hero h1 {
+        font-size: 53px;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .brand-visual {
+        width: 100%;
+        height: 340px;
+      }
+
+      .brand-ring {
+        width: 285px;
+        height: 285px;
+      }
+
+      .brand-ring::before {
+        inset: 35px;
+      }
+
+      .brand-center {
+        width: 190px;
+        height: 190px;
+
+        padding: 24px;
+      }
+
+      .brand-center h2 {
+        font-size: 25px;
+      }
+
+      .visual-label.one {
+        right: 0;
+        top: 30px;
+      }
+
+      .visual-label.two {
+        left: 0;
+        bottom: 30px;
+      }
+
+      .runtime-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .runtime-item {
+        min-height: 90px;
+
+        padding: 0 15px;
+
+        border-bottom: 1px solid var(--line);
+      }
+
+      .runtime-item:first-child {
+        padding-left: 15px;
+      }
+
+      .runtime-item:nth-child(2) {
+        border-right: 0;
+      }
+
+      .runtime-item:nth-child(3),
+      .runtime-item:nth-child(4) {
+        border-bottom: 0;
+      }
+
+      .runtime-item:last-child {
+        padding-right: 15px;
+      }
+
+      .section {
+        padding: 90px 0;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-item.large {
+        grid-column: auto;
+      }
+
+      .why-item {
+        min-height: 240px;
+      }
+
+      .management-option {
+        grid-template-columns: 42px 1fr auto;
+      }
+
+      .status {
+        padding-bottom: 90px;
+      }
+
+      .status-inner {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 28px;
+      }
+
+      .status-button {
+        width: 100%;
+
+        justify-content: center;
+      }
+
+      .cta {
+        padding: 95px 0;
+      }
+
+      .cta h2 {
+        font-size: 51px;
+      }
+
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-brand {
+        grid-column: auto;
+      }
+
+      .footer-bottom {
+        align-items: flex-start;
+
+        flex-direction: column;
+        justify-content: center;
+
+        gap: 5px;
+
+        padding: 18px 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      .fade {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <!-- =======================================================
+       HEADER
+  ======================================================== -->
+
+  <header class="header" id="header">
+
+    <div class="container nav">
+
+      <a href="#" class="brand">
+        <span class="brand-symbol">W</span>
+        <span>Wayne Hosting</span>
+      </a>
+
+      <nav class="nav-links">
+
+        <a href="#services">
+          服務
+        </a>
+
+        <a href="#why">
+          為什麼
+        </a>
+
+        <a href="#management">
+          管理
+        </a>
+
+        <a href="#status">
+          狀態
+        </a>
+
+        <a
+          href="https://docs.wayne227304.dpdns.org"
+          target="_blank"
+        >
+          文件
+        </a>
+
+      </nav>
+
+      <a
+        class="nav-cta"
+        href="https://main.wayne227304.dpdns.org/"
+        target="_blank"
+      >
+        開啟控制台
+      </a>
+
+    </div>
+
+  </header>
+
+
+  <!-- =======================================================
+       HERO
+  ======================================================== -->
+
+  <section class="hero">
+
+    <div class="container hero-grid">
+
+      <div class="hero-copy fade">
+
+        <div class="eyebrow">
+          Wayne Hosting
+        </div>
+
+        <h1>
+          你的伺服器，<br>
+          <span>不需要很複雜。</span>
+        </h1>
+
+        <p class="hero-text">
+          從網站、API、Discord Bot 到 Minecraft，
+          Wayne Hosting 提供你需要的執行環境與管理工具，
+          讓專案可以直接開始。
+        </p>
+
+        <div class="hero-actions">
+
+          <a
+            href="https://main.wayne227304.dpdns.org/"
+            target="_blank"
+            class="button button-primary"
+          >
+            開始使用
+            <span>→</span>
+          </a>
+
+          <a
+            href="https://docs.wayne227304.dpdns.org"
+            target="_blank"
+            class="button button-secondary"
+          >
+            查看文件
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="brand-visual fade">
+
+        <div class="brand-ring"></div>
+
+        <div class="visual-label one">
+          Node.js · Python
+        </div>
+
+        <div class="visual-label two">
+          Java · Minecraft
+        </div>
+
+        <div class="brand-center">
+
+          <div class="brand-center-mark">
+            WAYNE
+          </div>
+
+          <h2>
+            HOSTING
+          </h2>
+
+          <p>
+            Server hosting,<br>
+            without the unnecessary.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       RUNTIMES
+  ======================================================== -->
+
+  <section class="runtime-strip" id="services">
+
+    <div class="container runtime-grid">
+
+      <a class="runtime-item" href="#services">
+
+        <div>
+          <div class="runtime-name">
+            Node.js
+          </div>
+
+          <div class="runtime-type">
+            JavaScript / TypeScript
+          </div>
+        </div>
+
+        <div class="runtime-arrow">
+          →
+        </div>
+
+      </a>
+
+
+      <a class="runtime-item" href="#services">
+
+        <div>
+          <div class="runtime-name">
+            Python
+          </div>
+
+          <div class="runtime-type">
+            Flask / FastAPI / Bot
+          </div>
+        </div>
+
+        <div class="runtime-arrow">
+          →
+        </div>
+
+      </a>
+
+
+      <a class="runtime-item" href="#services">
+
+        <div>
+          <div class="runtime-name">
+            Java
+          </div>
+
+          <div class="runtime-type">
+            Java Applications
+          </div>
+        </div>
+
+        <div class="runtime-arrow">
+          →
+        </div>
+
+      </a>
+
+
+      <a class="runtime-item" href="#services">
+
+        <div>
+          <div class="runtime-name">
+            Minecraft
+          </div>
+
+          <div class="runtime-type">
+            Server Hosting
+          </div>
+        </div>
+
+        <div class="runtime-arrow">
+          →
+        </div>
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       WHY WAYNE
+  ======================================================== -->
+
+  <section class="section why" id="why">
+
+    <div class="container">
+
+      <div class="why-header fade">
+
+        <div class="eyebrow">
+          Why Wayne
+        </div>
+
+        <h2>
+          把複雜的事情，<br>
+          留在伺服器裡。
+        </h2>
+
+        <p class="why-description">
+          你不需要先成為伺服器管理員，才能把自己的專案放上線。
+          我們把常用的環境與管理方式整理好，剩下的交給你。
+        </p>
+
+      </div>
+
+
+      <div class="why-grid fade">
+
+        <article class="why-item large">
+
+          <div class="why-number">
+            01
+          </div>
+
+          <h3>
+            直接使用
+          </h3>
+
+          <p>
+            選擇適合你的環境，
+            不需要為了基本的部署流程研究一堆設定。
+          </p>
+
+        </article>
+
+
+        <article class="why-item">
+
+          <div class="why-number">
+            02
+          </div>
+
+          <h3>
+            多種環境
+          </h3>
+
+          <p>
+            Node.js、Python、Java
+            與 Minecraft 都可以找到對應的環境。
+          </p>
+
+        </article>
+
+
+        <article class="why-item">
+
+          <div class="why-number">
+            03
+          </div>
+
+          <h3>
+            清楚管理
+          </h3>
+
+          <p>
+            使用熟悉的控制面板管理你的伺服器，
+            不需要自己從零打造管理介面。
+          </p>
+
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       MANAGEMENT
+  ======================================================== -->
+
+  <section class="section management" id="management">
+
+    <div class="container management-layout">
+
+      <div class="management-copy fade">
+
+        <div class="eyebrow">
+          Management
+        </div>
+
+        <h2>
+          你習慣哪種方式，<br>
+          就用哪種。
+        </h2>
+
+        <p>
+          Wayne Hosting 提供不同的控制面板，
+          讓你用自己熟悉的方式管理伺服器。
+        </p>
+
+      </div>
+
+
+      <div class="management-options fade">
+
+        <a
+          href="https://main.wayne227304.dpdns.org/"
+          target="_blank"
+          class="management-option"
+        >
+
+          <div class="management-number">
+            01
+          </div>
+
+          <div>
+
+            <h3>
+              MCSManager
+            </h3>
+
+            <p>
+              Minecraft 與多伺服器管理
+            </p>
+
+          </div>
+
+          <div class="management-arrow">
+            →
+          </div>
+
+        </a>
+
+
+        <a
+          href="https://panel.wayne227304.dpdns.org/"
+          target="_blank"
+          class="management-option"
+        >
+
+          <div class="management-number">
+            02
+          </div>
+
+          <div>
+
+            <h3>
+              Pterodactyl
+            </h3>
+
+            <p>
+              伺服器與資源管理
+            </p>
+
+          </div>
+
+          <div class="management-arrow">
+            →
+          </div>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       STATUS
+  ======================================================== -->
+
+  <section class="status" id="status">
+
+    <div class="container">
+
+      <div class="status-inner fade">
+
+        <div class="status-info">
+
+          <span class="status-dot"></span>
+
+          <div>
+
+            <div class="status-title">
+              系統目前正常運作
+            </div>
+
+            <div class="status-description">
+              查看 Wayne Hosting 即時服務狀態
+            </div>
+
+          </div>
+
+        </div>
+
+        <a
+          href="https://stats.wayne227304.dpdns.org/status/default"
+          target="_blank"
+          class="status-button"
+        >
+          查看 Status Page
+          <span>→</span>
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       CTA
+  ======================================================== -->
+
+  <section class="cta">
+
+    <div class="container">
+
+      <div class="cta-content fade">
+
+        <div class="eyebrow">
+          Wayne Hosting
+        </div>
+
+        <h2>
+          有想法。<br>
+          <span>就讓它上線。</span>
+        </h2>
+
+        <p>
+          建立你的伺服器，選擇需要的環境，
+          然後開始你的下一個專案。
+        </p>
+
+        <div class="cta-actions">
+
+          <a
+            href="https://main.wayne227304.dpdns.org/"
+            target="_blank"
+            class="button button-primary"
+          >
+            開啟控制台
+            <span>→</span>
+          </a>
+
+          <a
+            href="https://discord.gg/QhjTkGBjkr"
+            target="_blank"
+            class="button button-secondary"
+          >
+            加入 Discord
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <div class="container footer-top">
+
+      <div class="footer-brand">
+
+        <div class="brand">
+
+          <span class="brand-symbol">
+            W
+          </span>
+
+          <span>
+            Wayne Hosting
+          </span>
+
+        </div>
+
+        <p class="footer-description">
+          讓你的伺服器保持簡單，
+          讓你的專案專注於真正重要的事情。
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Platform
+        </h4>
+
+        <a
+          href="https://main.wayne227304.dpdns.org/"
+          target="_blank"
+        >
+          MCSManager
+        </a>
+
+        <a
+          href="https://panel.wayne227304.dpdns.org/"
+          target="_blank"
+        >
+          Pterodactyl
+        </a>
+
+        <a
+          href="https://stats.wayne227304.dpdns.org/status/default"
+          target="_blank"
+        >
+          Status
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Resources
+        </h4>
+
+        <a
+          href="https://docs.wayne227304.dpdns.org"
+          target="_blank"
+        >
+          文件
+        </a>
+
+        <a
+          href="https://discord.gg/QhjTkGBjkr"
+          target="_blank"
+        >
+          Discord
+        </a>
+
+        <a
+          href="https://wayne227304.qzz.io/"
+          target="_blank"
+        >
+          服務條款
+        </a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h4>
+          Services
+        </h4>
+
+        <a href="#services">
+          Node.js
+        </a>
+
+        <a href="#services">
+          Python
+        </a>
+
+        <a href="#services">
+          Java
+        </a>
+
+        <a href="#services">
+          Minecraft
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <span>
+        © 2026 Wayne Hosting
+      </span>
+
+      <span>
+        Server hosting, without the unnecessary.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+
+    /*
+     * Header
+     */
+
+    const header =
+      document.getElementById("header");
+
+    function updateHeader() {
+
+      if (window.scrollY > 20) {
+        header.classList.add("active");
+      } else {
+        header.classList.remove("active");
+      }
+
+    }
+
+    window.addEventListener(
+      "scroll",
+      updateHeader,
+      { passive: true }
+    );
+
+    updateHeader();
+
+
+    /*
+     * Scroll reveal
+     */
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(entry => {
+
+            if (
+              entry.isIntersecting
+            ) {
+
+              entry.target.classList.add(
+                "visible"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          });
+
+        },
+        {
+          threshold: .12
+        }
+      );
+
+
+    document
+      .querySelectorAll(".fade")
+      .forEach(element => {
+
+        observer.observe(element);
+
+      });
+
+
+    /*
+     * Internal links
+     */
+
+    document
+      .querySelectorAll('a[href^="#"]')
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          event => {
+
+            const id =
+              link.getAttribute("href");
+
+            if (id === "#") {
+              return;
+            }
+
+            const target =
+              document.querySelector(id);
+
+            if (!target) {
+              return;
+            }
+
+            event.preventDefault();
+
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start"
+            });
+
+          }
+        );
+
+      });
+
+  </script>
+
+</body>
+</html>
